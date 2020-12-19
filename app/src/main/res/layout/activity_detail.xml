@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/black_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blackMask"
+        android:visibility="visible" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="400dp"
+        android:background="@drawable/bg_gradiant"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin_medium"
+                    card_view:cardBackgroundColor="@color/white"
+                    card_view:cardCornerRadius="@dimen/corner_radius"
+                    card_view:cardElevation="@dimen/card_elevation"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPadding="@dimen/default_margin_medium">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/title"
+                            style="@style/HeaderStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:textSize="@dimen/text_large"
+                            android:text="Title" />
+
+                        <TextView
+                            android:id="@+id/status"
+                            style="@style/CustomStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_action_calendar_month"
+                            android:drawablePadding="@dimen/default_padding_small"
+                            android:minHeight="@dimen/default_height_medium"
+                            android:text="release status" />
+
+                        <TextView
+                            android:id="@+id/release_date"
+                            style="@style/CustomStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_date_range"
+                            android:drawablePadding="@dimen/default_padding_small"
+                            android:minHeight="@dimen/default_height_medium"
+                            android:text="  date" />
+
+                        <TextView
+                            android:id="@+id/genre"
+                            style="@style/CustomStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_language"
+                            android:drawablePadding="@dimen/default_padding_small"
+                            android:minHeight="@dimen/default_height_medium"
+                            android:text="  genre 1, genre 2, genre 3" />
+
+                        <LinearLayout
+                            android:id="@+id/overview_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/HeaderStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="overview" />
+
+                            <TextView
+                                android:id="@+id/overview"
+                                style="@style/CustomStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/favourites_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:background="@color/colorAccent"
+                    android:clickable="true"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_heart" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/default_margin_small"
+                android:text="Posters:"
+                android:textAppearance="@style/HeaderStyle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_medium"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="@dimen/corner_radius"
+                card_view:cardElevation="@dimen/card_elevation"
+                card_view:cardUseCompatPadding="true"
+                card_view:contentPadding="@dimen/default_margin_medium">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/posters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/default_margin_small"
+                android:text="Backdrops:"
+                android:textAppearance="@style/HeaderStyle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_medium"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="@dimen/corner_radius"
+                card_view:cardElevation="@dimen/card_elevation"
+                card_view:cardUseCompatPadding="true"
+                card_view:contentPadding="@dimen/default_margin_medium">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/backdrops"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/default_margin_small"
+                android:text="Trailers:"
+                android:textAppearance="@style/HeaderStyle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_medium"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="@dimen/corner_radius"
+                card_view:cardElevation="@dimen/card_elevation"
+                card_view:cardUseCompatPadding="true"
+                card_view:contentPadding="@dimen/default_margin_medium">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trailers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/default_margin_small"
+                android:text="Cast:"
+                android:textAppearance="@style/HeaderStyle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</FrameLayout>

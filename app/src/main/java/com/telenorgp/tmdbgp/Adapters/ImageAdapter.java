@@ -1,0 +1,56 @@
+package com.telenorgp.tmdbgp.Adapters;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+import com.telenorgp.tmdbgp.R;
+import com.telenorgp.tmdbgp.Utils.CONSTANTS;
+
+import java.util.ArrayList;
+
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
+    private ArrayList<String> mImages;
+    private Context mContext;
+
+    public ImageAdapter(Context context, ArrayList<String> urls) {
+        mImages = urls;
+        mContext = context;
+    }
+
+    @Override
+    public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View inflatedView = LayoutInflater.from(mContext).inflate(R.layout.image, parent, false);
+        return new ImageViewHolder(inflatedView);
+    }
+
+    @Override
+    public void onBindViewHolder(ImageViewHolder holder, int position) {
+        holder.mProgressBar.setVisibility(View.VISIBLE);
+        Picasso.with(mContext).load(CONSTANTS.BASE_POSTER_URL_LARGE + mImages.get(position)).resize(0, CONSTANTS.BASE_POSTER_HEIGHT_SMALL).into(holder.mImageView);
+        holder.mProgressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mImages.size();
+    }
+
+    static class ImageViewHolder extends RecyclerView.ViewHolder {
+        ImageView mImageView;
+        View mItemView;
+        View mProgressBar;
+
+        public ImageViewHolder(View itemView) {
+            super(itemView);
+            mItemView = itemView;
+            mImageView = itemView.findViewById(R.id.image);
+            mProgressBar = itemView.findViewById(R.id.progress_bar);
+        }
+    }
+}
